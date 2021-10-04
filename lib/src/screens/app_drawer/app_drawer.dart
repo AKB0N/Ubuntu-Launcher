@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:launcher/src/blocs/opacity_cubit.dart';
+import 'package:launcher/src/utilities/app_size_config.dart';
 import 'package:launcher/src/utilities/enums.dart';
 import 'package:platform/platform.dart';
 import 'package:launcher/src/blocs/apps_cubit.dart';
@@ -34,8 +35,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
-
     final appsCubit = BlocProvider.of<AppsCubit>(context);
 
     final opacityCubit = BlocProvider.of<OpacityCubit>(context);

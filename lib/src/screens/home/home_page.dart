@@ -9,17 +9,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatelessWidget {
   static const route = '/';
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   List<Application> apps;
   String settingsPackageName;
   String cameraPackageName;
   String messagesPackageName;
-
   double sidebarOpacity = 1;
-
   bool autoOpenDrawer;
-
-  // List<Application> shortcutApps = [];
 
   _launchCaller() async {
     const url = "tel:";
@@ -34,7 +30,7 @@ class Home extends StatelessWidget {
 
   void getShortcutApps(apps) async {
     // Application settings, camera, sms, phone;
-    //
+
     String settingsPackageNameDemo;
     String messagesPackageNameDemo;
     String cameraPackageNameDemo;
@@ -113,7 +109,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(apps);
     final appsCubit = BlocProvider.of<AppsCubit>(context);
 
     final opacityCubit = BlocProvider.of<OpacityCubit>(context);
