@@ -1,11 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
-import 'package:launcher/src/core/modules/apps/blocs/blocs.dart';
-import 'package:launcher/src/core/modules/apps/resources/apps_api_provider.dart';
+import 'package:launcher/src/data/provirders/apps_api_provider.dart';
 
 part 'shortcut_apps_state.dart';
 
@@ -17,8 +14,8 @@ class ShortcutAppsCubit extends Cubit<ShortcutAppsState> {
 
   ShortcutAppsCubit() : super(ShortcutAppsInitial()) {
     // appsStreamSubscription = appsCubit.stream.listen((appsState) {
-    //   // print("inside cubit");
-    //   // print(appsState);
+    // print("inside cubit");
+    // print(appsState);
     //   if (appsState is AppsLoaded) {
     //     getShortcutApps(appsState.apps);
     //   }
@@ -54,9 +51,6 @@ class ShortcutAppsCubit extends Cubit<ShortcutAppsState> {
     }
 
     List<Application> shortcutApps = [settings, camera, sms, phone];
-    // print("Testing cubit");
-    // print(shortcutApps);
-
     emit(ShortcutAppsLoaded(shortcutApps));
 
     //messaging apps packageNames in different android phones
@@ -93,8 +87,6 @@ class ShortcutAppsCubit extends Cubit<ShortcutAppsState> {
 
   @override
   Future<void> close() {
-    // TODO: implement close
-    // appsStreamSubscription.cancel();
     return super.close();
   }
 }

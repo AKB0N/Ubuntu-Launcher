@@ -10,7 +10,6 @@ Future<void> showMyDialog(BuildContext context) async {
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              // Text('This is a demo alert dialog.'),
               Text('Are you sure you want to uninstall this application?'),
             ],
           ),

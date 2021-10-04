@@ -4,11 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:launcher/src/config/themes/cubit/opacity_cubit.dart';
-import 'package:launcher/src/ui/uninstaller_dialouge.dart';
+import 'package:launcher/src/blocs/opacity_cubit.dart';
+import 'package:launcher/src/utilities/enums.dart';
 import 'package:platform/platform.dart';
-import 'package:launcher/src/constants/enums.dart';
-import 'package:launcher/src/core/modules/apps/blocs/cubit/apps_cubit.dart';
+import 'package:launcher/src/blocs/apps_cubit.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -35,7 +34,6 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
 
     final appsCubit = BlocProvider.of<AppsCubit>(context);
@@ -63,7 +61,6 @@ class AppDrawer extends StatelessWidget {
             preferredSize: Size.fromHeight(100.0),
             child: SafeArea(
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Expanded(
@@ -74,7 +71,6 @@ class AppDrawer extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            // opacityCubit.opacityReset();
                             Navigator.pop(
                               context,
                             );
@@ -91,22 +87,18 @@ class AppDrawer extends StatelessWidget {
                           ),
                         ),
                         DropdownButton<String>(
-                          // value: sortType,
                           icon: Icon(
                             Icons.sort,
                             color: Colors.white,
                           ),
                           iconSize: 40,
                           elevation: 16,
-
-                          // focusColor: Colors.green,
                           style: TextStyle(color: Colors.black),
                           underline: Container(
                             color: Colors.transparent,
                             child: Text(""),
                           ),
                           onChanged: (sortType) {
-                            // print(sortType);
                             appsCubit.sortApps(sortType);
                           },
                           items: sortTypes
@@ -134,8 +126,6 @@ class AppDrawer extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: BlocBuilder<AppsCubit, AppsState>(
                           builder: (context, state) {
-                            // if (state is AppsLoaded) {
-
                             return Container(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 20),
@@ -179,8 +169,6 @@ class AppDrawer extends StatelessWidget {
                                     hintText: '   Type to search applications',
                                   ),
                                 ));
-                            // } else
-                            //   return RefreshProgressIndicator();
                           },
                         )),
                   ),
@@ -221,18 +209,14 @@ class AppDrawer extends StatelessWidget {
                             onTap: () {
                               DeviceApps.openApp(app.packageName);
                               Navigator.pop(context);
-                              // opacityCubit.opacityReset();
                             },
                             onLongPress: () async {
-                              // showMyDialog(context);
-                              //
                               Navigator.pop(context);
 
                               if (LocalPlatform().isAndroid) {
                                 final AndroidIntent intent = AndroidIntent(
                                   action: 'action_application_details_settings',
-                                  data: 'package:' +
-                                      app.packageName, // replace com.example.app with your applicationId
+                                  data: 'package:' + app.packageName,
                                 );
                                 await intent.launch();
                               }

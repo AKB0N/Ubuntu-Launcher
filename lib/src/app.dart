@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:launcher/src/config/routes/app_routes.dart';
-import 'package:launcher/src/config/themes/cubit/opacity_cubit.dart';
-import 'package:launcher/src/core/modules/apps/blocs/blocs.dart';
-import 'package:launcher/src/core/modules/home/blocs/cubit/shortcut_apps_cubit.dart';
-import './config/routes/app_routes.dart';
+import 'package:launcher/src/blocs/opacity_cubit.dart';
+import 'package:launcher/src/routes/routes.dart';
+import 'blocs/blocs.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -26,8 +24,7 @@ class MyApp extends StatelessWidget {
               visualDensity: VisualDensity.adaptivePlatformDensity,
               canvasColor: Colors.transparent),
           darkTheme: ThemeData(
-            // New
-            brightness: Brightness.light, // New
+            brightness: Brightness.light,
           ),
           title: "Ubuntu Launcher",
           onGenerateRoute: AppRoutes.onGenerateRoute,

@@ -2,9 +2,9 @@ import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:launcher/src/config/themes/cubit/opacity_cubit.dart';
-import 'package:launcher/src/core/modules/apps/blocs/blocs.dart';
-import 'package:launcher/src/core/modules/apps/views/app_drawer.dart';
+import 'package:launcher/src/blocs/apps_cubit.dart';
+import 'package:launcher/src/blocs/opacity_cubit.dart';
+import 'package:launcher/src/screens/app_drawer/app_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatelessWidget {
@@ -20,7 +20,6 @@ class Home extends StatelessWidget {
   bool autoOpenDrawer;
 
   // List<Application> shortcutApps = [];
-  //
 
   _launchCaller() async {
     const url = "tel:";
@@ -54,7 +53,7 @@ class Home extends StatelessWidget {
       }
       //  else if (app.appName == "Phone" || app.appName == "Call") {
       //   messagesPackageNameDemo = app.packageName;
-      //   // phone = apps[i];
+      // phone = apps[i];
       // }
     }
 
@@ -123,7 +122,6 @@ class Home extends StatelessWidget {
       SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
         statusBarColor: Color.fromRGBO(39, 21, 40, 0.5),
-        // systemNavigationBarColor: Color.fromRGBO(72, 33, 79, 1),
       ),
     );
     return WillPopScope(
@@ -143,7 +141,6 @@ class Home extends StatelessWidget {
                 child: SafeArea(
                     child: Container(
                         color: Color.fromRGBO(39, 21, 40, 0.5),
-                        // Colors.pink.withOpacity(0.5),
                         height: MediaQuery.of(context).size.height,
                         width: 60.0,
                         child: Column(
@@ -160,7 +157,6 @@ class Home extends StatelessWidget {
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.all(10),
-                                      // width: 35,
                                       child: ClipRRect(
                                         child: Hero(
                                           tag: 'drawer',
@@ -277,8 +273,6 @@ class Home extends StatelessWidget {
               );
             }
           }),
-          // drawerEnableOpenDragGesture:
-          // (appsCubit.state is AppsLoaded) ? true : false,
         ),
       ),
     );

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class Page404 extends StatelessWidget {
@@ -11,9 +9,6 @@ class Page404 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    // throw UnimplementedError();
-    //
     return Scaffold(
       body: Center(
         child: Text(
